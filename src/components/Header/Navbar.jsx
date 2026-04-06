@@ -1,12 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const Navbar = () => {
 
     const navLinks = (
         <>
-            <li><a className="hover:text-primary transition">Home</a></li>
-            <li><a className="hover:text-primary transition">About</a></li>
-            <li><a className="hover:text-primary transition">Pricing</a></li>
+            <Link className='mr-2'><a className="hover:text-primary transition">Home</a></Link>
+            <Link className='mr-2'><a className="hover:text-primary transition">About</a></Link>
+            <Link className='mr-2'><a className="hover:text-primary transition">Pricing</a></Link>
         </>
     );
 

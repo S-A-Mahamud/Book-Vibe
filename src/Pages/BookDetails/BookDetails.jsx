@@ -1,20 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useLoaderData, useParams } from 'react-router';
+import { BookContext } from '../../components/Context/BookProvider';
 
 const BookDetails = () => {
 
     const { bookId } = useParams();
 
-    console.log(bookId);
+    // console.log(bookId);
 
     const books = useLoaderData();
 
-    console.log(books);
+    // console.log(books);
 
 
     const bookDetails = books.find(book => book.bookId === Number(bookId))
 
-    const {image, bookName, author, category, review, totalPages, publisher, yearOfPublishing, rating} = bookDetails;
+    const { image, bookName, author, category, review, totalPages, publisher, yearOfPublishing, rating } = bookDetails;
 
     /**
    * author: "F. Scott Fitzgerald"
@@ -30,11 +31,16 @@ const BookDetails = () => {
   yearOfPublishing: 1925
    */
 
+    const {handleBookAsRead, handleBookAsWishList} = useContext(BookContext);
+
+    // console.log(handleBookAsRead,  'handleBookAsRead');
+    // console.log(handleBookAsWishList,  'handleBookAsWishList');
+
 
 
     return (
-        <div className="flex justify-start gap-10 my-10 ">
-            <figure className='rounded-lg w-full bg-base-200 flex items-center justify-center '>
+        <div className="flex justify-start gap-10    my-10 ">
+            <figure className='rounded-lg w-full bg-base-200 flex items-center justify-center'>
                 <img className='w-auto h-150 rounded-2xl rotate-x-15 -rotate-y-30'
                     src={image}
                     alt={bookName} />
@@ -60,8 +66,8 @@ const BookDetails = () => {
                 <p>Year of Publishing: <span className='font-bold'>{yearOfPublishing}</span></p>
                 <p>Rating: <span className='font-bold'>{rating}</span></p>
                 <div className="flex gap-4 text-lg">
-                    <button className="btn p-4.5">Read</button>
-                    <button className="btn btn-info text-white p-4.5">Wishlist</button>
+                    <button onClick={() => handleBookAsRead(bookDetails)} className="btn p-4.5">Read</button>
+                    <button onClick={() => handleBookAsWishList(bookDetails)} className="btn btn-info text-white p-4.5">Wishlist</button>
                 </div>
             </div>
         </div>

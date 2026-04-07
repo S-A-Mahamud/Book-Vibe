@@ -5,9 +5,9 @@ const Navbar = () => {
 
     const navLinks = (
         <>
-            <Link className='mr-2'><a className="hover:text-primary transition">Home</a></Link>
-            <Link className='mr-2'><a className="hover:text-primary transition">About</a></Link>
-            <Link className='mr-2'><a className="hover:text-primary transition">Pricing</a></Link>
+            <Link to="/" className='mr-2 hover:text-primary transition'>Home</Link>
+            <Link to="/listedBooks" className='mr-2 hover:text-primary transition'>Listed Books</Link>
+            <Link to="/pricing" className='mr-2 hover:text-primary transition'>Pricing</Link>
         </>
     );
 
